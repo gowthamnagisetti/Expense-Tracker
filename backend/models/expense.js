@@ -6,6 +6,11 @@ const expenseSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    description: {
+        type: String,
+        required: true,
+        default: "Other expenses"
+    },
     amount: {
         type: Number,
         required: true,
@@ -15,7 +20,7 @@ const expenseSchema = new mongoose.Schema({
         type: String,
         ref: 'Category',
         default: null,
-        required: false
+        required: true
     },
     date: {
         type: Date,
