@@ -9,12 +9,13 @@ const expenseSchema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        min: 0
+        min: 1
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Category',
-        required: true
+        default: null,
+        required: false
     },
     date: {
         type: Date,

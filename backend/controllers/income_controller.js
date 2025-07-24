@@ -60,4 +60,17 @@ const updateIncome = async (req, res) => {
         res.status(500).json({ message: 'Error updating income', error: error.message });
     }
 }
-export { incomePost, getIncome, deleteIncome, updateIncome };
+const getIncomeByUser = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const incomes = await Income.find({ user: userId }).populate('category', 'name');
+        if (!incomes || incomes.length === 0) {
+            return res.status(404).json({ message: 'No income found for this user' });
+        }
+        res.status(200).json(incomes);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching income', error: error.message });
+    }
+}
+
+export { incomePost, getIncome, deleteIncome, updateIncome, getIncomeByUser };
