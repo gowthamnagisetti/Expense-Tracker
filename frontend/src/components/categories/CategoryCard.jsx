@@ -1,15 +1,18 @@
-import { Edit2, Trash2, Tag } from 'lucide-react';
+import { Edit2, Trash2 } from 'lucide-react';
+import { getIconComponent } from '../../utils/icons';
 
 const CategoryCard = ({ category, onEdit, onDelete }) => {
+  const IconComponent = getIconComponent(category.icon || 'tag');
+  
   return (
     <div className="card hover:shadow-lg transition-shadow">
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3 flex-1">
           <div
             className="w-12 h-12 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: category.color }}
+            style={{ backgroundColor: category.color || '#3B82F6' }}
           >
-            <Tag className="h-6 w-6 text-white" />
+            <IconComponent className="h-6 w-6 text-white" />
           </div>
           
           <div className="flex-1">

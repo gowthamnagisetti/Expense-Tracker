@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { getIconOptions, getIconComponent } from '../../utils/icons';
 
 const CategoryForm = ({ category, onSubmit, onClose }) => {
   const [formData, setFormData] = useState({
     name: category?.name || '',
     description: category?.description || '',
     color: category?.color || '#3B82F6',
-    type: category?.type || 'expense'
+    type: category?.type || 'expense',
+    icon: category?.icon || 'tag'
   });
 
   const [errors, setErrors] = useState({});
+  const iconOptions = getIconOptions();
 
   const colorOptions = [
     '#3B82F6', // Blue
@@ -71,7 +74,7 @@ const CategoryForm = ({ category, onSubmit, onClose }) => {
       <div className="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold text-gray-900">
-            {category ? 'Edit Category' : 'Add New Category'}
+            {category ? 'Edit Category' : 'Category Details'}
           </h3>
           <button
             onClick={onClose}
@@ -131,6 +134,44 @@ const CategoryForm = ({ category, onSubmit, onClose }) => {
               <option value="expense">Expense</option>
               <option value="income">Income</option>
             </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-3">
+              Icon
+            </label>
+            <div className="grid grid-cols-6 gap-3 max-h-32 overflow-y-auto border border-gray-200 rounded-lg p-3">
+              {iconOptions.map((option) => {
+                const IconComponent = option.component;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, icon: option.value }))}
+                    className={`w-10 h-10 rounded-lg border-2 flex items-center justify-center hover:bg-gray-50 transition-colors ${
+                      formData.icon === option.value 
+                        ? 'border-blue-500 bg-blue-50 text-blue-600' 
+                        : 'border-gray-200 text-gray-600'
+                    }`}
+                    title={option.label}
+                  >
+                    <IconComponent className="h-5 w-5" />
+                  </button>
+                );
+              })}
+            </div>
+            <div className="mt-2 flex items-center space-x-2">
+              <div 
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ backgroundColor: formData.color }}
+              >
+                {(() => {
+                  const PreviewIcon = getIconComponent(formData.icon);
+                  return <PreviewIcon className="h-4 w-4 text-white" />;
+                })()}
+              </div>
+              <span className="text-sm text-gray-600">Preview</span>
+            </div>
           </div>
 
           <div>

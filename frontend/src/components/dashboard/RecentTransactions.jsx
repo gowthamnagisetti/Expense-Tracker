@@ -1,7 +1,14 @@
 import { ArrowUpRight, ArrowDownRight, Calendar } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { formatCurrency, formatDate } from '../../utils/helpers';
 
 const RecentTransactions = ({ transactions }) => {
+  const navigate = useNavigate();
+
+  const handleViewAllTransactions = () => {
+    navigate('/expenses');
+  };
+
   if (!transactions || transactions.length === 0) {
     return (
       <div className="card">
@@ -60,7 +67,10 @@ const RecentTransactions = ({ transactions }) => {
       
       {transactions.length > 0 && (
         <div className="mt-4 pt-4 border-t border-gray-200">
-          <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+          <button 
+            onClick={handleViewAllTransactions}
+            className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
+          >
             View all transactions →
           </button>
         </div>

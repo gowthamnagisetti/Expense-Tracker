@@ -21,7 +21,9 @@ const Categories = () => {
   const handleAddCategory = (categoryData) => {
     const newCategory = {
       _id: Date.now().toString(),
-      ...categoryData
+      ...categoryData,
+      // Ensure icon is included
+      icon: categoryData.icon || 'tag'
     };
     setCategories([...categories, newCategory]);
     setShowForm(false);
@@ -79,7 +81,7 @@ const Categories = () => {
         <CategoryForm
           category={editingCategory}
           onSubmit={editingCategory ? handleEditCategory : handleAddCategory}
-          onCancel={closeForm}
+          onClose={closeForm}
         />
       )}
 

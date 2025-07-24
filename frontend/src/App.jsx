@@ -24,7 +24,6 @@ const AppRoutes = () => {
         </div>
       );
     }
-    
     return user ? children : <Navigate to="/login" />;
   };
 

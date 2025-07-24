@@ -60,22 +60,22 @@ const ExpenseList = ({ expenses, onEdit, onDelete }) => {
                       {formatDate(expense.date)}
                     </span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-3">
                     <div>
                       <span className="font-medium text-gray-900">{expense.title}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-3">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                       {expense.category?.name || 'Uncategorized'}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right">
+                  <td className="px-6 py-3">
                     <span className="text-lg font-semibold text-red-600">
                       {formatCurrency(expense.amount)}
                     </span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-3">
                     <div className="flex items-center justify-center space-x-2">
                       <button
                         onClick={() => onEdit(expense)}

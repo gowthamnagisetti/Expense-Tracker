@@ -6,14 +6,14 @@ export const dummyUser = {
 };
 
 export const dummyCategories = [
-  { _id: '1', name: 'Food & Dining' },
-  { _id: '2', name: 'Transportation' },
-  { _id: '3', name: 'Entertainment' },
-  { _id: '4', name: 'Utilities' },
-  { _id: '5', name: 'Healthcare' },
-  { _id: '6', name: 'Salary' },
-  { _id: '7', name: 'Freelancing' },
-  { _id: '8', name: 'Investments' }
+  { _id: '1', name: 'Food & Dining', icon: 'utensils', color: '#EF4444', type: 'expense' },
+  { _id: '2', name: 'Transportation', icon: 'car', color: '#3B82F6', type: 'expense' },
+  { _id: '3', name: 'Entertainment', icon: 'film', color: '#8B5CF6', type: 'expense' },
+  { _id: '4', name: 'Utilities', icon: 'zap', color: '#F59E0B', type: 'expense' },
+  { _id: '5', name: 'Healthcare', icon: 'heart', color: '#10B981', type: 'expense' },
+  { _id: '6', name: 'Salary', icon: 'briefcase', color: '#059669', type: 'income' },
+  { _id: '7', name: 'Freelancing', icon: 'laptop', color: '#0891B2', type: 'income' },
+  { _id: '8', name: 'Investments', icon: 'trending-up', color: '#7C3AED', type: 'income' }
 ];
 
 export const dummyExpenses = [

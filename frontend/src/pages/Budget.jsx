@@ -4,6 +4,8 @@ import BudgetList from '../components/budget/BudgetList';
 import BudgetForm from '../components/budget/BudgetForm';
 import { dummyBudgets } from '../data/dummyData';
 
+
+
 const Budget = () => {
   const [budgets, setBudgets] = useState([]);
   const [showForm, setShowForm] = useState(false);
